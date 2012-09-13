@@ -1,0 +1,6 @@
+/data
+StackOverflowChallenge/data
+*.pdf
+*.pyc
+*~
+kaggle_data

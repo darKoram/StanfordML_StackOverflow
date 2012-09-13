@@ -1,0 +1,93 @@
+
+Eclipse gives errors in competition_utilities.py
+Description	Resource	Path	Location	Type
+Undefined variable from import: io	competition_utilities.py	/StackOverflowChallenge	line 36	PyDev Problem
+
+$ipython notebook --pylab inline 
+copy http://127.0.0.1:8888/ into browser 
+
+$locate panda
+/usr/lib/pymodules/python2.7/pandas/io/parsers.py
+/usr/lib/pymodules/python2.7/pandas/io/parsers.pyc
+
+On hover over pd gives
+Found at: pandas.__init__
+C extensions not built: if you installed already
+
+and in pandas
+try:
+    import pandas._tseries as lib
+except Exception, e:  # pragma: no cover
+    if 'No module named' in str(e):
+        raise ImportError('C extensions not built: if you installed already '
+                          'verify that you are not importing from the source '
+                          'directory')
+                          
+                          
+So my guess is we are importing from source rather than from lib
+/usr/share  instead of 
+/usr/lib
+
+How to tell eclipse no look for panda in /usr/lib?
+
+Eclipse is grabbing pandas file from /usr/share/pyshared
+
+def main():
+    header, sample = sample_train(os.path.join(cu.data_path, "train.csv"))
+    cu.write_sample("train-sample1.csv", header, sample)
+
+    header, sample = sample_train(os.path.join(cu.data_path, "train-A.csv"))
+    save_sample("train-A-sample1.csv", header, sample)
+    
+ save_sample is not defined in sample_train.py.
+ features.py has a line: import features.  Is that allowed?
+ There is also a file called features (no .py) in the data download.
+ 
+ matplotlib multiple lines in a figure
+ http://www.scipy.org/Cookbook/Matplotlib/AdjustingImageSize
+http://matplotlib.sourceforge.net/mpl_examples/pylab_examples/barb_demo.py
+
+  indexing tricks
+  /home/kesten/VCP/Git/ML/kaggle_data/doc
+  
+  closed
+  http://stackoverflow.com/questions/12274898/tsays-iterative-outlier-detection-procedure-and-chen-and-lius-joint-outlier-de
+  
+  I want to replicate the Tsay's iterative outlier detection procedure and 
+  Chen and Liu's joint outlier detection procedure in time series. 
+  Could any body help me in writing the code?
+  
+  ************* Notes on BodyMarkdown Analysis**********
+  
+  Text with no code blocks are more likely to be tossed.
+  
+  
+  *********** Exercises**********
+  Experiment with different settings in SciPy's RandomForestClassifier using 
+  basic_benchmark.py provided by Kabble in the Data download on the cleaned data sets provided.
+  http://scikit-learn.org/dev/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+  Report results of leaderboard fit and runtimes for various parameters and sample sizes.
+  
+  
+  You will need to redefine the path on your system to where you have downloaded your files
+  in competition_utilities.py
+
+  ToolChain:
+  git for version control and downloading start files
+  linux(ubuntu)
+  Python IDE = Eclipse with PyDev
+  ipython with numpy, scipy
+  libreoffice to inspect the csv files
+  
+  I work with an ipython terminal, Eclipse and Ipython notebook (in firefox) open 
+  all at the same time.  The terminal is best for testing syntax quickly.  PyDev gives
+  nice code completion and tooltips (notepad does to with tab) and the notepad provides
+  a nice way of recording an interactive session and presenting work to others.  Also,
+  it's not too uncommon for something to not work in one dev environment but to work
+  in another!
+  
+  Make sure if you edit coolstuff.py in Eclipse that you reload(coolstuff) in iPython
+  notebook and the terminal.
+  
+  
+  
